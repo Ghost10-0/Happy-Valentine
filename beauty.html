@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For Anitha</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:ital,wght@0,600;1,500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-light: linear-gradient(135deg, #F7E6EB, #EDE4F2);
+      --bg-dark: linear-gradient(135deg, #1A0F18, #2A1630);
+      --card-light: rgba(255,255,255,0.65);
+      --card-dark: rgba(40,20,45,0.75);
+      --text-light: #2E1A27;
+      --text-dark: #F6EAF2;
+      --accent: #B83280;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-light);
+      color: var(--text-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.5s ease;
+      overflow: hidden;
+    }
+
+    body.dark {
+      background: var(--bg-dark);
+      color: var(--text-dark);
+    }
+
+    .container {
+      max-width: 900px;
+      padding: 40px;
+      text-align: center;
+      z-index: 2;
+    }
+
+    .card {
+      background: var(--card-light);
+      backdrop-filter: blur(12px);
+      border-radius: 24px;
+      padding: 55px 40px;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.25);
+      transition: all 0.5s ease;
+    }
+
+    body.dark .card {
+      background: var(--card-dark);
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.9rem;
+      margin-bottom: 12px;
+    }
+
+    h1 span {
+      color: var(--accent);
+      font-style: italic;
+    }
+
+    .subtitle {
+      color: #6D4A5F;
+      margin-bottom: 35px;
+    }
+
+    body.dark .subtitle {
+      color: #C8A6B8;
+    }
+
+    .message {
+      line-height: 1.9;
+      margin-bottom: 30px;
+    }
+
+    .secret {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      margin: 25px 0;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+    }
+
+    .secret.show {
+      opacity: 1;
+    }
+
+    .reasons p {
+      margin: 10px 0;
+    }
+
+    button {
+      margin-top: 28px;
+      padding: 14px 36px;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+      background: var(--accent);
+      color: #FFF0F6;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 15px 30px rgba(184,50,128,0.4);
+    }
+
+    button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 22px 40px rgba(184,50,128,0.55);
+    }
+
+    .toggle {
+      margin-top: 18px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      opacity: 0.8;
+    }
+
+    footer {
+      margin-top: 22px;
+      font-size: 0.8rem;
+      opacity: 0.7;
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: absolute;
+      bottom: -20px;
+      font-size: 18px;
+      animation: floatUp 8s linear infinite;
+      opacity: 0.6;
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(0);
+        opacity: 0.6;
+      }
+      to {
+        transform: translateY(-110vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="card">
+      <h1>For <span>Anitha</span></h1>
+      <p class="subtitle">Not coincidence. Not random. Just intentional.</p>
+
+      <p class="message">
+        I made this because some people don’t need loud words.
+        <br><br>
+        Somehow, you became someone I notice quietly —
+        the kind of presence that feels calm, warm, and rare.
+      </p>
+
+      <p class="secret" id="secretText">
+        “Some people arrive softly…  
+        and change the atmosphere without trying.”
+      </p>
+
+      <div class="reasons">
+        <p>🌸 Your calm feels safe</p>
+        <p>🌙 You make silence comfortable</p>
+        <p>💗 You feel like poetry without effort</p>
+      </div>
+
+      <button onclick="revealSecret()">
+        Tap if you’re curious
+      </button>
+
+      <div class="toggle" onclick="toggleDark()">
+        🌙 Switch the mood
+      </div>
+
+      <footer>
+        Made with intention — not pressure.
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    function revealSecret() {
+      document.getElementById("secretText").classList.add("show");
+    }
+
+    function toggleDark() {
+      document.body.classList.toggle("dark");
+    }
+
+    // Floating hearts
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerText = Math.random() > 0.5 ? "💗" : "🌸";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = 6 + Math.random() * 4 + "s";
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 9000);
+    }, 700);
+  </script>
+
+</body>
+</html>
